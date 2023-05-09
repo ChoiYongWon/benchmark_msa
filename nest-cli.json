@@ -1,8 +1,41 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/benchmark_msa/src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/benchmark_msa/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/benchmark_msa",
+  "projects": {
+    "benchmark_msa": {
+      "type": "application",
+      "root": "apps/benchmark_msa",
+      "entryFile": "main",
+      "sourceRoot": "apps/benchmark_msa/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/benchmark_msa/tsconfig.app.json"
+      }
+    },
+    "post": {
+      "type": "application",
+      "root": "apps/post",
+      "entryFile": "main",
+      "sourceRoot": "apps/post/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/post/tsconfig.app.json"
+      }
+    },
+    "comment": {
+      "type": "application",
+      "root": "apps/comment",
+      "entryFile": "main",
+      "sourceRoot": "apps/comment/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/comment/tsconfig.app.json"
+      }
+    }
   }
 }
